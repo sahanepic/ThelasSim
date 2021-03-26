@@ -20,12 +20,13 @@ public class TsetPin {
 		
 		try {
 			ss = new Socket("192.168.20.216",8888);
+		//	ss = new Socket("127.0.0.1",9997);
 			 din= new DataInputStream(ss.getInputStream());
 			 dout= new DataOutputStream(ss.getOutputStream());
 //			 byte[] request =ISOUtil.hex2byte("01");
 			 
 			//pin generation related code 
-			byte[] request =ISOUtil.hex2byte("EE0E04" + "00" + "04" + "01" + "123412341234" + "1111" + "9CAAEF5CD4E554029CAAEF5CD4E55402");
+			//byte[] request =ISOUtil.hex2byte("EE0E04" + "00" + "04" + "01" + "123412341234" + "1111" + "9CAAEF5CD4E554029CAAEF5CD4E55402");
 			
 			 
 			 //pin Set related Command
@@ -35,11 +36,18 @@ public class TsetPin {
 			 // clear pi generation
 			// byte[] request =ISOUtil.hex2byte("EE0600" + "00" + "04"+ "1234" + "123412341234" + "1111" + "9CAAEF5CD4E554029CAAEF5CD4E55402" );
 			 
+			 
+			   byte[] request =ISOUtil.hex2byte("EE0600" + "00" + "04"+ "1234" + "123412341234" + "1111" + "9CAAEF5CD4E554029CAAEF5CD4E55402" );
+			 
 			 String hlen = Integer.toHexString(request.length);			  
 			  final String hd = "01010000" + ISOUtil.zeropad(hlen, 4);
 			  request = ISOUtil.concat(ISOUtil.hex2byte(hd), request);
 			  
-//					ISOUtil.hex2byte("010100000003FFF000");
+					ISOUtil.hex2byte("010100000003FFF000");
+			   
+			   
+			//byte[] request = ISOUtil.hex2byte("00173030303142413132333430313739393939393030303133") ;
+			   
 			byte[] response = new byte[1024];
 			
 			System.out.println("\nREQUEST :\n" + ISOUtil.hexdump(request));
