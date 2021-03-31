@@ -26,7 +26,8 @@ public class TsetPin {
 //			 byte[] request =ISOUtil.hex2byte("01");
 			 
 			//pin generation related code 
-			//byte[] request =ISOUtil.hex2byte("EE0E04" + "00" + "04" + "01" + "123412341234" + "1111" + "9CAAEF5CD4E554029CAAEF5CD4E55402");
+			 // 100% correct Code
+//			byte[] request =ISOUtil.hex2byte("EE0E04" + "00" + "04" + "01" + "123412341234" + "1111" + "9CAAEF5CD4E554029CAAEF5CD4E55402");
 			
 			 
 			 //pin Set related Command
@@ -37,13 +38,21 @@ public class TsetPin {
 			// byte[] request =ISOUtil.hex2byte("EE0600" + "00" + "04"+ "1234" + "123412341234" + "1111" + "9CAAEF5CD4E554029CAAEF5CD4E55402" );
 			 
 			 
-			   byte[] request =ISOUtil.hex2byte("EE0600" + "00" + "04"+ "1234" + "123412341234" + "1111" + "9CAAEF5CD4E554029CAAEF5CD4E55402" );
+			 //mac commands  EE0700
+// 			 byte[] request =ISOUtil.hex2byte("EE0700" + "00" + "11"+ "0000000000000000" + "11"+"FB69AFE8C1B47E30E7A15EC404B35200" + "2054" + "9CAAEF5CD4E554029CAAEF5CD4E55402" );
+			 
+			//mac commands  EE0701
+ 			 byte[] request =ISOUtil.hex2byte("EE0701" + "00" + "00"+ "08"+ "0000000000000000"  +"11"+"11FB69AFE8C1B47E30E7A15EC404B35193" + "18" + "E9A02CEBFA202F6DC1D46250A6AEAB4CA07C265862F359C2"  );
+			 
+			 
+			 //generate sha hash EE9008
+//			 byte[] request =ISOUtil.hex2byte("EE9008" + "00" + "01" + "00" + "0000000000000000" + "0000000000000000"   + "12341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234"   );
 			 
 			 String hlen = Integer.toHexString(request.length);			  
 			  final String hd = "01010000" + ISOUtil.zeropad(hlen, 4);
 			  request = ISOUtil.concat(ISOUtil.hex2byte(hd), request);
 			  
-					ISOUtil.hex2byte("010100000003FFF000");
+					//ISOUtil.hex2byte("010100000003FFF000");
 			   
 			   
 			//byte[] request = ISOUtil.hex2byte("00173030303142413132333430313739393939393030303133") ;
@@ -66,6 +75,9 @@ public class TsetPin {
                       System.out.println("Enc Pin Block " + epb);
                 }else {
                 	System.out.println("Error Responce!!!!!!!!" + len + " " + rc );
+                	
+//                	String aa = "0";
+//                	System.out.println("The Hex  " +  ISOUtil.hexString(aa.getBytes())  );		
                 }
             }
 			
